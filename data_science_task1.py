@@ -13,14 +13,14 @@ student_grades = {
 grades = list(student_grades.values())
 max_grade = max(grades)
 min_grade = min(grades)
-average_grade = sum(grades) / len(student_grades)
 failed = []
 passed=[]
 first_students = []
 last_students = []
 additional_tutoring = []
-
+grade_sum=0
 for student, grade in student_grades.items():
+    grade_sum+=grade
     #finding student(s) with the highest grade
     if grade == max_grade:
         first_students.append(student)
@@ -37,6 +37,7 @@ for student, grade in student_grades.items():
     if grade < additional_tutoring_grade:
         additional_tutoring.append(student)
 
+average_grade = grade_sum / len(student_grades)
 #part1
 print(f"GRADE SUMMARY")
 print(f"the average grade for the class:        {average_grade:.2f}")
